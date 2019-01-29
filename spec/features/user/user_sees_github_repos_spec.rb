@@ -4,7 +4,6 @@ describe 'As a default user' do
   describe 'when I log in' do
     it 'my dashboard should have a github section with repo names as links' do
       user = create(:user, token: "8caaa533fb393a502d014a1df646d123588782ef")
-
       visit '/'
 
       click_on "Sign In"
@@ -16,10 +15,10 @@ describe 'As a default user' do
       click_on 'Log In'
 
       expect(current_path).to eq(dashboard_path)
-      expect(page).to have_css(".repos", count: 5)
+      expect(page).to have_css(".repo", count: 5)
 
-      within(first(".repo")) do
-        expect(page).to have_link("Battleship")
+      within(".github") do
+        expect(page).to have_link("little-shop")
       end
     end
   end
