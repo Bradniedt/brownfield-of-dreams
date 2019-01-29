@@ -7,9 +7,9 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <section class="repos">
-    <% @repositories.each do |repo| %>
-      <%= link_to "#{repo.name}", "#{repo.url}" %>
+  <section class="github">
+    <% @repos.each do |repo| %>
+      <%= link_to "#{repo.name}", "#{repo.url}", class: "repo" %>
     <% end %>
   </section>
   <section>
