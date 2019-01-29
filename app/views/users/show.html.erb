@@ -9,9 +9,10 @@
   </ul>
   <% if @repos %>
     <section class="github">
+      <h3>Repositories</h3>
       <ul>
-      <% @repos.each do |repo| %>
-        <li><%= link_to "#{repo.name}", "#{repo.url}", class: "repo" %></li>
+      <% @repos.each do |r| %>
+        <li> <%= link_to "#{r.name}", "#{r.url}", class: "repo" %> </li>
       <% end %>
       </ul>
     </section>
