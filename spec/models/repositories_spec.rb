@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-desribe Repo do
+describe Repo do
   it 'exists' do
     data = {
       name: "Repo1",
