@@ -1,3 +1,17 @@
+require 'simplecov'
+SimpleCov.start 'rails' do
+  add_filter '/bin/'
+  add_filter '/db/'
+  add_filter '/spec/' # for rspec
+  add_filter '/test/' # for minitest
+  add_filter '/channels'
+  add_filter '/jobs'
+  add_filter '/mailers'
+  add_filter '/controllers'
+  add_filter '/helpers'
+  add_filter '/models/application_record.rb'
+end
+
 RSpec.configure do |config|
 
   config.before(:suite) do

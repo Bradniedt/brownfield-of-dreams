@@ -28,7 +28,7 @@ gem 'acts-as-taggable-on', '~> 6.0'
 gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census"
 gem 'sprockets'
 gem 'sprockets-es6'
-gem 'faraday' 
+gem 'faraday'
 
 
 group :development, :test do
@@ -42,7 +42,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'awesome_print'
   gem 'webmock'
-  gem 'simplecov'
+  gem 'simplecov', require: false
   gem 'vcr'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
