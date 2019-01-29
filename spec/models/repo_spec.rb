@@ -1,28 +1,34 @@
 require 'rails_helper'
 
 describe Repo do
-
   it 'exists' do
-    attributes = {}
-    repo = Repo.new(attributes)
-    expect(repo).to be_a(Repo)
-  end
-
-  it 'has attributes' do
-    attributes = { name: "Repository 1",
-                   html_url: "www.github.com/repository1"
+    data = {
+      name: "Repo1",
+      html_url: "www.hello.com"
     }
-    repo = Repo.new(attributes)
+    repo = Repo.new(data)
 
-    expect(repo.name).to eq(attributes[:name])
-    expect(repo.url).to eq(attributes[:html_url])
+    expect(repo).to be_an_instance_of Repo
   end
-  describe 'Class Methods' do
-    it '.find_all' do
-      repos = Repo.find_all("whatever")
+  it 'has attributes' do
+    data = {
+      name: "Repo1",
+      html_url: "www.hello.com"
+    }
+    repo = Repo.new(data)
 
-      expect(repos.count).to eq(5)
-      expect(repos.first).to be_an_instance_of(Repo)
+    expect(repo.name).to eq(data[:name])
+    expect(repo.url).to eq(data[:html_url])
+  end
+  describe 'class methods' do
+    it '.find_all' do
+      VCR.use_cassette("github_service") do
+        token = "hello"
+        repos = Repo.find_all(token)
+
+        expect(repos.count).to eq(5)
+        expect(repos[0]).to be_an_instance_of Repo
+      end
     end
   end
 end
