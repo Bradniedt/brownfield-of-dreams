@@ -28,6 +28,7 @@ gem 'acts-as-taggable-on', '~> 6.0'
 gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census"
 gem 'sprockets'
 gem 'sprockets-es6'
+gem 'faraday' 
 
 
 group :development, :test do
