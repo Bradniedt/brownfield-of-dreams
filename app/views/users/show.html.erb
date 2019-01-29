@@ -7,11 +7,15 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <section class="github">
-    <% @repos.each do |repo| %>
-      <%= link_to "#{repo.name}", "#{repo.url}", class: "repo" %>
-    <% end %>
-  </section>
+  <% if @repos %>
+    <section class="github">
+      <ul>
+      <% @repos.each do |repo| %>
+        <li><%= link_to "#{repo.name}", "#{repo.url}", class: "repo" %></li>
+      <% end %>
+      </ul>
+    </section>
+  <% end %>
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
