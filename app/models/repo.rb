@@ -6,16 +6,9 @@ class Repo
   end
 
   def self.find_all(token)
-    token = ENV['GITHUB_API_KEY']
-    @conn = Faraday.new(url: "https://api.github.com") do |faraday|
-      faraday.headers["Authorization"] = token
-      faraday.headers["Accept"] = "application/vnd.github.v3+json"
-      faraday.adapter Faraday.default_adapter
-    end
-    response = @conn.get("/user/repos")
-    raw_repos = JSON.parse(response.body, symbolize_names: true).take(5)
-    raw_repos.map do |data|
+    repos = GithubService.find_repos(token).map do |data|
       Repo.new(data)
     end
+    repos
   end
 end
