@@ -18,7 +18,7 @@
       <h3>Followers</h3>
       <ul>
       <% @followers.each do |f| %>
-        <li> <%= link_to "#{f.name}", "#{f.url}", class: "follower" %> </li>
+        <li> <%= link_to "#{f.login}", "#{f.url}", class: "follower" %> </li>
       <% end %>
       </ul>
     </section>

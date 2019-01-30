@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "A default visitor to our app" do
   it 'can see github repos when logged in' do
-    VCR.use_cassette('github_repos') do
+    VCR.use_cassette('github_followers_and_repos') do
       user = create(:user, token: "whatever")
       visit '/'
       click_on "Sign In"
@@ -13,7 +13,6 @@ describe "A default visitor to our app" do
       fill_in 'session[password]', with: user.password
 
       click_on 'Log In'
-
       expect(current_path).to eq(dashboard_path)
       expect(page).to have_css(".repo", count: 5)
       within(".github") do
@@ -56,4 +55,5 @@ describe "A default visitor to our app" do
         expect(page).to have_link("abroberts5")
       end
     end
+  end
 end
