@@ -15,6 +15,12 @@
         <li> <%= link_to "#{r.name}", "#{r.url}", class: "repo" %> </li>
       <% end %>
       </ul>
+      <h3>Followers</h3>
+      <ul>
+      <% @followers.each do |f| %>
+        <li> <%= link_to "#{f.name}", "#{f.url}", class: "follower" %> </li>
+      <% end %>
+      </ul>
     </section>
   <% end %>
   <section>
