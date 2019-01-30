@@ -1,4 +1,4 @@
-class GithubService
+class GithubFollowerService
   def initialize(token)
     @token = ENV['GITHUB_API_KEY']
     @conn = Faraday.new(url: "https://api.github.com") do |faraday|
@@ -10,14 +10,14 @@ class GithubService
 
   def get_url(url)
     response = @conn.get(url)
-    JSON.parse(response.body, symbolize_names: true).take(5)
+    JSON.parse(response.body, symbolize_names: true)
   end
 
-  def find_repos
-    get_url("/user/repos")
+  def find_followers
+    get_url("/user/followers")
   end
 
-  def self.find_repos(token)
-    new(token).find_repos
+  def self.find_followers(token)
+    new(token).find_followers
   end
 end

@@ -16,6 +16,14 @@
       <% end %>
       </ul>
     </section>
+    <section class="followers">
+      <h3>Followers</h3>
+      <ul>
+      <% @followers.each do |f| %>
+        <li> <%= link_to "#{f.login}", "#{f.url}", class: "follower" %> </li>
+      <% end %>
+      </ul>
+    </section>
   <% end %>
   <section>
     <h1>Bookmarked Segments</h1>
