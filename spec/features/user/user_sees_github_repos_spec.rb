@@ -54,8 +54,8 @@ describe 'As a default user' do
         expect(current_path).to eq(dashboard_path)
         expect(page).to have_css(".follower", count: 11)
 
-        within(".github") do
-          expect(page).to have_link("tbd")
+        within(first(".followers")) do
+          expect(page).to have_link("abroberts5")
         end
       #end
     end
