@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Repo do
+describe Follower do
   it 'exists' do
     data = {
       name: "Repo1",
