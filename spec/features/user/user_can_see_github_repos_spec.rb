@@ -36,21 +36,23 @@ describe "A default visitor to our app" do
       expect(page).to_not have_css(".repo")
       expect(page).to_not have_css(".github")
   end
-  it 'can see followers when logged in' do
-    VCR.use_cassette('github_followers_and_repos') do
-      user = create(:user, token: "whatever")
+  it 'my dashboard should have a github section with follower names as links' do
+    VCR.use_cassette("repos_and_followers") do
+      user = create(:user, token: "hello")
       visit '/'
-      click_on "Sign In"
 
+      click_on "Sign In"
       expect(current_path).to eq(login_path)
+
       fill_in 'session[email]', with: user.email
       fill_in 'session[password]', with: user.password
 
       click_on 'Log In'
-
       expect(current_path).to eq(dashboard_path)
-      save_and_open_page
-      expect(page).to have_css(".follower")
+      expect(page).to have_css(".follower", count: 11)
+
+      within(".github") do
+        expect(page).to have_link("abroberts5")
+      end
     end
-  end
 end
