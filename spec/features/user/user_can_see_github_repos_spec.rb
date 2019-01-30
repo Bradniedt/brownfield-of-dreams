@@ -55,4 +55,5 @@ describe "A default visitor to our app" do
         expect(page).to have_link("abroberts5")
       end
     end
+  end
 end
