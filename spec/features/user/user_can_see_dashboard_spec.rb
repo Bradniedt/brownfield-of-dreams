@@ -49,10 +49,30 @@ describe "A default visitor to our app" do
 
       click_on 'Log In'
       expect(current_path).to eq(dashboard_path)
-      expect(page).to have_css(".follower", count: 11)
+      expect(page).to have_css(".follower")
 
       within(".github") do
         expect(page).to have_link("abroberts5")
+      end
+    end
+  end
+  it 'my dashboard should have a github section with people I follow and their names as links' do
+    VCR.use_cassette("people_i_follow") do
+      user = create(:user, token: "hello")
+      visit '/'
+
+      click_on "Sign In"
+      expect(current_path).to eq(login_path)
+
+      fill_in 'session[email]', with: user.email
+      fill_in 'session[password]', with: user.password
+
+      click_on 'Log In'
+      expect(current_path).to eq(dashboard_path)
+      expect(page).to have_css(".person-i-follow")
+
+      within(".github") do
+        expect(page).to have_link("iandouglas")
       end
     end
   end
