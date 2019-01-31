@@ -8,4 +8,9 @@ class User < ApplicationRecord
   enum role: [:default, :admin]
   has_secure_password
 
+  def add_github(auth_hash)
+    token = auth_hash["credentials"]["token"]
+    update!(token: "token #{token}")
+  end
+
 end
