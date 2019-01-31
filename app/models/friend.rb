@@ -1,4 +1,4 @@
-class Follower
+class Friend
   attr_reader :name, :url
   def initialize(data)
     @name = data[:login]
@@ -6,9 +6,9 @@ class Follower
   end
 
   def self.find_all(token)
-    followers = GithubFollowerService.find_followers(token).map do |data|
-      Follower.new(data)
+    friends = GithubFriendsService.find_friends(token).map do |data|
+      Friend.new(data)
     end
-    followers
+    friends
   end
 end

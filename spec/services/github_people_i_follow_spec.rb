@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-describe GithubPeopleIFollowService do
+describe GithubFriendsService do
   it 'exists' do
-    service = GithubPeopleIFollowService.new("token")
+    service = GithubFriendsService.new("token")
 
-    expect(service).to be_an_instance_of GithubPeopleIFollowService
+    expect(service).to be_an_instance_of GithubFriendsService
   end
   it 'gets people a user follows for' do
-    VCR.use_cassette("people_i_follow") do
-      people = GithubPeopleIFollowService.find_people_i_follow("token")
+    VCR.use_cassette("friends") do
+      people = GithubFriendsService.find_friends("token")
 
       expect(people[0][:login]).to eq("iandouglas")
     end

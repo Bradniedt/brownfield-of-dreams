@@ -1,0 +1,6 @@
+<h3>Users I'm Following</h3>
+<ul>
+  <% @user.friends.each do |friend| %>
+    <li> <%= link_to "#{friend.name}", "#{friend.url}", class: "friend" %></li>
+  <% end %>
+</ul>

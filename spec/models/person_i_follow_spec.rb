@@ -1,32 +1,32 @@
 require 'rails_helper'
 
-describe PersonIFollow do
+describe Friend do
   it 'exists' do
     data = {
-      login: "PersonIFollow1",
+      login: "Friend1",
       url: "www.hello.com"
     }
-    people = PersonIFollow.new(data)
+    people = Friend.new(data)
 
-    expect(people).to be_an_instance_of PersonIFollow
+    expect(people).to be_an_instance_of Friend
   end
   it 'has attributes' do
     data = {
-      login: "PersonIFollow1",
+      login: "Friend1",
       html_url: "www.hello.com"
     }
-    person = PersonIFollow.new(data)
+    person = Friend.new(data)
 
     expect(person.name).to eq(data[:login])
     expect(person.url).to eq(data[:url])
   end
   describe 'class methods' do
     it '.find_all' do
-      VCR.use_cassette("people_i_follow") do
+      VCR.use_cassette("friends") do
         token = "hello"
-        people = PersonIFollow.find_all(token)
+        people = Friend.find_all(token)
 
-        expect(people[0]).to be_an_instance_of PersonIFollow
+        expect(people[0]).to be_an_instance_of Friend
       end
     end
   end
