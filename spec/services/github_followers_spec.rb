@@ -10,7 +10,6 @@ describe GithubFollowerService do
     VCR.use_cassette("github_follower_service") do
       followers = GithubFollowerService.find_followers("token")
 
-      expect(followers.count).to eq(11)
       expect(followers[0][:login]).to eq("abroberts5")
     end
   end
