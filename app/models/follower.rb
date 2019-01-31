@@ -1,7 +1,7 @@
 class Follower
-  attr_reader :login, :url
+  attr_reader :name, :url
   def initialize(data)
-    @login = data[:login]
+    @name = data[:login]
     @url = data[:url]
   end
 
