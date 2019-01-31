@@ -11,21 +11,21 @@
     <section class="github">
       <h3>Repositories</h3>
       <ul>
-      <% @repos.each do |r| %>
-        <li> <%= link_to "#{r.name}", "#{r.url}", class: "repo" %> </li>
-      <% end %>
+        <% @repos.each do |r| %>
+          <li> <%= link_to "#{r.name}", "#{r.url}", class: "repo" %> </li>
+        <% end %>
       </ul>
       <h3>Followers</h3>
       <ul>
-      <% @followers.each do |f| %>
-        <li> <%= link_to "#{f.name}", "#{f.url}", class: "follower" %> </li>
-      <% end %>
+        <% @followers.each do |f| %>
+          <li> <%= link_to "#{f.login}", "#{f.url}", class: "follower" %> </li>
+        <% end %>
       </ul>
-      <h3>Users I Follow</h3>
+      <h3>Users I'm Following</h3>
       <ul>
-      <% @followed.each do |f| %>
-        <li> <%= link_to "#{f.name}", "#{f.url}", class: "followed" %> </li>
-      <% end %>
+        <% @people_I_follow.each do |person| %>
+          <li> <%= link_to "#{person.name}", "#{person.url}", class: "person-i-follow" %></li>
+        <% end %>
       </ul>
     </section>
   <% end %>
