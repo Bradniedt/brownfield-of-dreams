@@ -1,6 +1,6 @@
 class GithubService
   def initialize(token)
-    @token = ENV['GITHUB_API_KEY']
+    @token = token
     @conn = Faraday.new(url: "https://api.github.com") do |faraday|
       faraday.headers["Authorization"] = @token
       faraday.headers["Accept"] = "application/vnd.github.v3+json"
