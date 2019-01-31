@@ -13,4 +13,16 @@ class User < ApplicationRecord
     update!(token: "token #{token}")
   end
 
+  def repos(token)
+    Repo.find_all(token)
+  end
+
+  def followers(token)
+    Follower.find_all(token)
+  end
+
+  def people_i_follow(token)
+    PersonIFollow.find_all(token)
+  end
+
 end
