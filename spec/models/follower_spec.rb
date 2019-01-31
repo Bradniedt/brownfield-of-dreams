@@ -3,22 +3,22 @@ require 'rails_helper'
 describe Follower do
   it 'exists' do
     data = {
-      login: "Follower1",
+      login: "Name1",
       url: "www.hello.com"
     }
-    follower = Follower.new(data)
+    follow = Follower.new(data)
 
-    expect(follower).to be_an_instance_of Follower
+    expect(follow).to be_an_instance_of Follower
   end
   it 'has attributes' do
     data = {
-      login: "Follower1",
+      login: "Repo1",
       url: "www.hello.com"
     }
-    follower = Follower.new(data)
+    follow = Follower.new(data)
 
-    expect(follower.login).to eq(data[:login])
-    expect(follower.url).to eq(data[:url])
+    expect(follow.name).to eq(data[:login])
+    expect(follow.url).to eq(data[:url])
   end
   describe 'class methods' do
     it '.find_all' do
