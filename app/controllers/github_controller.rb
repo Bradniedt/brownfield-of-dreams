@@ -1,14 +1,6 @@
 class GithubController < ApplicationController
-
   def create
-    current_user.add_github(auth_hash)
+    User.from_omniauth(request.env["omniauth.auth"], current_user.id)
     redirect_to dashboard_path
   end
-
-  protected
-
-  def auth_hash
-    request.env['omniauth.auth']
-  end
-
 end
