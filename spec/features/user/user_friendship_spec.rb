@@ -24,7 +24,9 @@ describe 'User Friendship Functionality' do
         click_on("Add as Friend")
       end
       within("#iandouglas") do
-        expect(page).to have_link("iandouglas")
+        expect(page).to_not have_link("Add as Friend")
+      end
+      within("#abroberts5") do
         expect(page).to_not have_link("Add as Friend")
       end
     end

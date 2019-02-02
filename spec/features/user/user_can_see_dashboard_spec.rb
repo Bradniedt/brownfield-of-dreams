@@ -69,7 +69,7 @@ describe "A default visitor to our app" do
 
       click_on 'Log In'
       expect(current_path).to eq(dashboard_path)
-      expect(page).to have_css(".friend")
+      expect(page).to have_css(".following")
 
       within(".github") do
         expect(page).to have_link("iandouglas")
