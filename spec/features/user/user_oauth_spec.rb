@@ -13,6 +13,7 @@ describe 'User Oauth' do
     VCR.use_cassette("oauth") do
       OmniAuth.config.test_mode = true
       OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+        "nickname" => "User1",
         "credentials" => {"token" => ENV['GITHUB_API_KEY']}
         })
       user = create(:user)
@@ -22,7 +23,10 @@ describe 'User Oauth' do
 
       click_on('Connect to Github')
 
+      updated_user = User.find(user.id)
       expect(page.status_code).to eq(200)
+      expect(updated_user.githubname).to eq("User1")
+      expect(updated_user.token).to eq(ENV['GITHUB_API_KEY'])
       within(".github") do
         expect(page).to have_link("activerecord-obstacle-course")
         expect(page).to have_link("abroberts5")

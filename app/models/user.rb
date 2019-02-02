@@ -11,6 +11,7 @@ class User < ApplicationRecord
   def add_github(auth_hash)
     token = auth_hash["credentials"]["token"]
     update!(token: "#{token}")
+    update!(githubname: auth_hash["nickname"])
   end
 
   def repos(token)
