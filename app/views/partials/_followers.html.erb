@@ -1,6 +1,8 @@
 <h3>Followers</h3>
 <ul>
   <% @user.followers.each do |follower| %>
-    <li> <%= link_to "#{follower.name}", "#{follower.url}", class: "follower" %> </li>
+    <li>
+      <%= link_to "#{follower.name}", "#{follower.url}", class: "follower" %> - - - - -<%= link_to "Add Friend", friendships_path(friend_id: follower.id), method: :post %>
+     </li>
   <% end %>
 </ul>
