@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe 'User Friendship Functionality' do
   it 'A user can add a friend.' do
-
     VCR.use_cassette("friends") do
       user1 = create(:user, token: ENV['GITHUB_API_KEY'])
       user2 = create(:user, githubname: "iandouglas")
