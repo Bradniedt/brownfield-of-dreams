@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
   def show
-    if current_user.token
-      @repos = Repo.find_all(current_user.token)
-      @followers = Follower.find_all(current_user.token)
-      @people_I_follow = PersonIFollow.find_all(current_user.token)
-    end
+    @user = UserPresenter.new(current_user) if current_user.token
   end
 
   def new

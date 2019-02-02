@@ -2,31 +2,21 @@
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
+
+  <% unless current_user.token %>
+    <%= button_to 'Connect to Github', github_login_path, class: "btn btn-primary mb1 bg-teal" %>
+  <% end %>
+
   <h3>Account Details</h3>
   <ul>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <% if @repos %>
+  <% if current_user.token %>
     <section class="github">
-      <h3>Repositories</h3>
-      <ul>
-        <% @repos.each do |r| %>
-          <li> <%= link_to "#{r.name}", "#{r.url}", class: "repo" %> </li>
-        <% end %>
-      </ul>
-      <h3>Followers</h3>
-      <ul>
-        <% @followers.each do |f| %>
-          <li> <%= link_to "#{f.login}", "#{f.url}", class: "follower" %> </li>
-        <% end %>
-      </ul>
-      <h3>Users I'm Following</h3>
-      <ul>
-        <% @people_I_follow.each do |person| %>
-          <li> <%= link_to "#{person.name}", "#{person.url}", class: "person-i-follow" %></li>
-        <% end %>
-      </ul>
+      <%= render 'partials/repos' %>
+      <%= render 'partials/followers' %>
+      <%= render 'partials/friends' %>
     </section>
   <% end %>
   <section>

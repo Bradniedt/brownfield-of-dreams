@@ -57,8 +57,8 @@ describe "A default visitor to our app" do
     end
   end
   it 'my dashboard should have a github section with people I follow and their names as links' do
-    VCR.use_cassette("people_i_follow") do
-      user = create(:user, token: "hello")
+    VCR.use_cassette("friends") do
+      user = create(:user, token: ENV['GITHUB_API_KEY'])
       visit '/'
 
       click_on "Sign In"
@@ -69,7 +69,7 @@ describe "A default visitor to our app" do
 
       click_on 'Log In'
       expect(current_path).to eq(dashboard_path)
-      expect(page).to have_css(".person-i-follow")
+      expect(page).to have_css(".friend")
 
       within(".github") do
         expect(page).to have_link("iandouglas")
