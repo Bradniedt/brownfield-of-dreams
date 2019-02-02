@@ -19,6 +19,11 @@
       <%= render 'partials/friends' %>
     </section>
   <% end %>
+  <% if !current_user.friends.empty? %>
+    <section>
+    <%= render 'partials/my_friends' %>
+    </section>
+  <% end %>
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
