@@ -1,4 +1,4 @@
-class GithubFriendsService
+class GithubPeopleIFollowService
   def initialize(token)
     @token = "token #{token}"
     @conn = Faraday.new(url: "https://api.github.com") do |faraday|
@@ -13,11 +13,11 @@ class GithubFriendsService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def find_friends
+  def find_people_i_follow
     get_url("/user/following")
   end
 
-  def self.find_friends(token)
-    new(token).find_friends
+  def self.find_people_i_follow(token)
+    new(token).find_people_i_follow
   end
 end

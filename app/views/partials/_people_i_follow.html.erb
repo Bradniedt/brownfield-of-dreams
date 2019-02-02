@@ -1,0 +1,6 @@
+<h3>Users I'm Following</h3>
+<ul>
+  <% @user.people_i_follow.each do |person| %>
+    <li> <%= link_to "#{person.name}", "#{person.url}", class: "person-i-follow" %></li>
+  <% end %>
+</ul>
