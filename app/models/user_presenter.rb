@@ -6,7 +6,7 @@ class UserPresenter
     token = user.token
     @repos = user.repos(token)
     @followers = user.followers(token)
-    @friends = user.friends(token)
+    @friends = user.following(token)
   end
 
 end

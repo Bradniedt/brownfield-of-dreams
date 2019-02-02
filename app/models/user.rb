@@ -22,8 +22,8 @@ class User < ApplicationRecord
     Follower.find_all(token)
   end
 
-  def friends(token)
-    Friend.find_all(token)
+  def following(token)
+    Following.find_all(token)
   end
 
 end

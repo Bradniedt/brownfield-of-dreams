@@ -1,21 +1,21 @@
 require 'rails_helper'
 
-describe Friend do
+describe Following do
   it 'exists' do
     data = {
       login: "Friend1",
       url: "www.hello.com"
     }
-    people = Friend.new(data)
+    people = Following.new(data)
 
-    expect(people).to be_an_instance_of Friend
+    expect(people).to be_an_instance_of Following
   end
   it 'has attributes' do
     data = {
-      login: "Friend1",
+      login: "Following1",
       html_url: "www.hello.com"
     }
-    person = Friend.new(data)
+    person = Following.new(data)
 
     expect(person.name).to eq(data[:login])
     expect(person.url).to eq(data[:url])
@@ -24,9 +24,9 @@ describe Friend do
     it '.find_all' do
       VCR.use_cassette("friends") do
         token = "hello"
-        people = Friend.find_all(token)
+        people = Following.find_all(token)
 
-        expect(people[0]).to be_an_instance_of Friend
+        expect(people[0]).to be_an_instance_of Following
       end
     end
   end
