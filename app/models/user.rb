@@ -29,4 +29,17 @@ class User < ApplicationRecord
     Following.find_all(token)
   end
 
+  def self.user_check(name)
+    User.find_by(githubname: name)
+  end
+
+  def friend_check(name)
+    friend = User.user_check(name)
+    friends.include?(friend)
+  end
+
+  def add_friend(name)
+    new_friend = User.user_check(name)
+    Friendship.create(user: self, friend: new_friend)
+  end
 end
