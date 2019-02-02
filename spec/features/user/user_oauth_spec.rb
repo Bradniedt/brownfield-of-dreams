@@ -20,7 +20,13 @@ describe 'User Oauth' do
 
       visit dashboard_path
 
-      expect(page).to have_button('Connect to Github')
+      click_on('Connect to Github')
+
+      expect(page.status_code).to eq(200)
+      within(".github") do
+        expect(page).to have_link("activerecord-obstacle-course")
+        expect(page).to have_link("abroberts5")
+      end
     end
   end
 end
