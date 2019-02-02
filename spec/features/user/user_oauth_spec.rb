@@ -6,7 +6,6 @@ describe 'User Oauth' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit dashboard_path
-    save_and_open_page
 
     expect(page).to have_button('Connect to Github')
   end
@@ -20,7 +19,6 @@ describe 'User Oauth' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit dashboard_path
-      save_and_open_page
 
       expect(page).to have_button('Connect to Github')
     end
