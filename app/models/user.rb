@@ -34,6 +34,7 @@ class User < ApplicationRecord
   end
 
   def friend_check(name)
+    return false if User.user_check(name).nil?
     friend = User.user_check(name)
     friends.include?(friend)
   end

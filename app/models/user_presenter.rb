@@ -1,12 +1,11 @@
 class UserPresenter
-  attr_reader :repos, :followers, :friends
+  attr_reader :repos, :followers, :followings, :user
 
   def initialize(user)
     @user = user
     token = user.token
     @repos = user.repos(token)
     @followers = user.followers(token)
-    @friends = user.following(token)
+    @followings = user.following(token)
   end
-
 end
