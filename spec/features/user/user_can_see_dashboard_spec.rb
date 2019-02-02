@@ -58,7 +58,7 @@ describe "A default visitor to our app" do
   end
   it 'my dashboard should have a github section with people I follow and their names as links' do
     VCR.use_cassette("friends") do
-      user = create(:user, token: "hello")
+      user = create(:user, token: ENV['GITHUB_API_KEY'])
       visit '/'
 
       click_on "Sign In"

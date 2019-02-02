@@ -17,7 +17,7 @@ describe Follower do
     }
     follower = Follower.new(data)
 
-    expect(follower.login).to eq(data[:login])
+    expect(follower.name).to eq(data[:login])
     expect(follower.url).to eq(data[:url])
   end
   describe 'class methods' do
@@ -26,7 +26,7 @@ describe Follower do
         token = "hello"
         followers = Follower.find_all(token)
 
-      
+
         expect(followers[0]).to be_an_instance_of Follower
       end
     end
