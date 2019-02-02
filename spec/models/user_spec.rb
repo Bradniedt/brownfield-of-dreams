@@ -24,4 +24,18 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
+  describe 'friendship methods' do
+    it 'can check friendships' do
+      user1 = create(:user)
+      user2 = create(:user, githubname: "user2")
+      user3 = create(:user)
+
+      expect(User.user_check(user2.githubname)).to eq(user2)
+      expect(user1.friend_check(user2.githubname)).to eq(false)
+
+      user1.add_friend(user2.githubname)
+
+      expect(user1.friend_check(user2.githubname)).to eq(true)
+    end
+  end
 end
