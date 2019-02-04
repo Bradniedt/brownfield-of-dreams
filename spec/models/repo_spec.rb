@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Repo do
+describe Repo, type: :model do
   it 'exists' do
     data = {
       name: "Repo1",

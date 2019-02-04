@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Following do
+describe Following, type: :model do
   it 'exists' do
     data = {
       login: "Friend1",
