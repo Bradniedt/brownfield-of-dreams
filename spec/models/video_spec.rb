@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Video, type: :model do
+  describe 'Validations' do
+    it { should validate_presence_of :position }
+  end
   describe 'class method' do
     it '.get_bookmarks' do
       tutorial_1 = create(:tutorial)
