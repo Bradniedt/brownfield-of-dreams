@@ -18,5 +18,12 @@ describe 'As a visitor' do
         expect(page).to have_link(tutorial_3.title)
       end
     end
+    it 'when they visit a tutorial show page for a tutorial without a video' do
+      tutorial_1 = create(:tutorial, classroom: false)
+
+      visit tutorial_path(tutorial_1)
+      
+      expect(page).to have_content("This tutorial does not have any videos yet.")
+    end
   end
 end
