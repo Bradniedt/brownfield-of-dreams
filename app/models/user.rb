@@ -43,4 +43,9 @@ class User < ApplicationRecord
     new_friend = User.user_check(name)
     Friendship.create(user: self, friend: new_friend)
   end
+
+  def get_bookmarks
+    id = self.id
+    Video.get_bookmarks(id)
+  end
 end
