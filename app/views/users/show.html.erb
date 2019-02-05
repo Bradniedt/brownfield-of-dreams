@@ -9,6 +9,9 @@
 
   <h3>Account Details</h3>
   <ul>
+    <% if current_user.status %>
+      <li>"Status: Active"</li>
+    <% end %>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
