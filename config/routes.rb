@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'auth/github', as: :github_login
   get '/auth/github/callback', to: 'github#create'
   post '/add_friend', to: "friendship#create", as: :add_friend
+  post '/notification' => 'notification#create'
 
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
