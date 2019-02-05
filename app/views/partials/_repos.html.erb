@@ -1,6 +1,0 @@
-<h3>Repositories</h3>
-<ul>
-  <% @user.repos.each do |r| %>
-    <li> <%= link_to "#{r.name}", "#{r.url}", class: "repo" %> </li>
-  <% end %>
-</ul>
