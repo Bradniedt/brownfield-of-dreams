@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       unless user.active?
         flash[:alert] = "This account has not yet been activated. Please check your email."
       end
-      redirect_to dashboard_path
+      redirect_to notification_path
     else
       flash[:error] = 'Username already exists'
       render :new
