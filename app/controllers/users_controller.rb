@@ -13,6 +13,10 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user.save
       session[:user_id] = user.id
+      flash[:notice] = "Logged in as #{user.first_name}"
+      unless user.active?
+        flash[:alert] = "This account has not yet been activated. Please check your email."
+      end
       redirect_to notification_path
     else
       flash[:error] = 'Username already exists'
