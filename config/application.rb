@@ -27,7 +27,5 @@ module BrownfieldOfDreams
                                            :user_name => ENV['mailgun_username'],
                                            :password => ENV['mailgun_password']
                                          }
-
-
   end
 end
