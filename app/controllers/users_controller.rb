@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def show
     @user = UserPresenter.new(current_user) if current_user.token
     @bookmarks = current_user.get_bookmarks
+    flash[:alert] = "This account has not yet been activated. Please check your email." if current_user.inactive?
   end
 
   def new

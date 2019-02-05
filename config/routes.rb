@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  get '/notification', as: :notification, to: 'notification#create'
+  get '/activate', as: :activate, to: 'activate#create'
+  
   namespace :api do
     namespace :v1 do
       resources :tutorials, only:[:show, :index]
