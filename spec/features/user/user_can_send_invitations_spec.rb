@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe "As a user" do
   it 'I can send an invite to any github user' do
-    VCR.use_cassette('github_followers_and_repos') do
-      user = create(:user, token: "whatever")
+    VCR.use_cassette('github_emails') do
+      user = create(:user, token: "#{ENV['GITHUB_API_KEY']}")
       visit '/'
       click_on "Sign In"
 
@@ -19,7 +19,7 @@ describe "As a user" do
       click_on("Send an Invite")
       expect(current_path).to eq(invite_path)
 
-      fill_in 'github_handle', with: "Bradniedt"
+      fill_in 'github_handle', with: "Jcasimir"
       click_on("Send Invite")
 
       expect(current_path).to eq(dashboard_path)
@@ -27,8 +27,8 @@ describe "As a user" do
     end
   end
   it 'I cannot send an invite to a github user with no email' do
-    VCR.use_cassette('github_followers_and_repos') do
-      user = create(:user, token: "whatever")
+    VCR.use_cassette('github_emails') do
+      user = create(:user, token: "#{ENV['GITHUB_API_KEY']}")
       visit '/'
       click_on "Sign In"
 
