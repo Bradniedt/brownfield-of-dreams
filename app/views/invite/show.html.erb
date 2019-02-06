@@ -1,0 +1,6 @@
+<%= form_tag :invite, method: :post do |i| %>
+  <div class="form-group search-field">
+    <%= text_field_tag :github_handle, "Github Username" %>
+    <%= submit_tag "Send Invite", class: "btn btn-primary" %>
+  </div>
+<% end %>
