@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   post '/add_friend', to: "friendship#create", as: :add_friend
   get '/notification', as: :notification, to: 'notification#create'
   get '/activate', as: :activate, to: 'activate#create'
+  get '/invite', as: :invite, to: 'invite#show'
+  post '/invite', to: 'invite#create'
 
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
