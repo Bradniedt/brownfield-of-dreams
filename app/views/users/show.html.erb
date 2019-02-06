@@ -7,6 +7,8 @@
     <%= button_to 'Connect to Github', github_login_path, class: "btn btn-primary mb1 bg-teal" %>
   <% end %>
 
+  <%= link_to "Send an Invite", invite_path %>
+
   <h3>Account Details</h3>
   <ul>
     <% if current_user.status %>
