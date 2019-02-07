@@ -34,7 +34,7 @@ describe "As a user" do
     end
   end
   it 'I cannot send an invite to a github user with no email' do
-    VCR.use_cassette('github_friends') do
+    VCR.use_cassette('invitation') do
       user = create(:user, token: "#{ENV['GITHUB_API_KEY']}")
       visit '/'
       click_on "Sign In"

@@ -23,7 +23,7 @@ describe Following, type: :model do
   describe 'class methods' do
     it '.find_all' do
       VCR.use_cassette("friends") do
-        token = "hello"
+        token = ENV['GITHUB_API_KEY']
         people = Following.find_all(token)
 
         expect(people[0]).to be_an_instance_of Following

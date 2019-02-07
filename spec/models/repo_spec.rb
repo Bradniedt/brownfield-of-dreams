@@ -23,7 +23,7 @@ describe Repo, type: :model do
   describe 'class methods' do
     it '.find_all' do
       VCR.use_cassette("github_service") do
-        token = "hello"
+        token = ENV['GITHUB_API_KEY']
         repos = Repo.find_all(token)
 
         expect(repos.count).to eq(5)
