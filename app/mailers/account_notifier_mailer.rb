@@ -4,9 +4,8 @@ class AccountNotifierMailer < ApplicationMailer
     mail(to: user.email, subject: "Activate Your Account")
   end
   def invite(email, user, invitee)
-    @user = user.name
+    @user = "#{user.first_name} #{user.last_name}"
     @invitee = invitee
-    binding.pry
     mail(to: email, subject: "Sign up for Brownfield Tutorials")
   end
 end
