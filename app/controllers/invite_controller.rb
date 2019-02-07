@@ -5,11 +5,11 @@ class InviteController < ApplicationController
   def create
     #maybe sanitize the github name here
     result = Email.find_address(current_user.token, params[:github_handle])
-    binding.pry
-    if result.address.include?("@")
-      #send email
+    if result.address.chars.include?("@")
+      AccountNotifierMailer.invite(result.address, current_user, params[:github_handle]).deliver_now
     else
-      flash[:alert] = "#{result.message}"
+      flash[:notice] = "#{result.address}"
     end
+    redirect_to dashboard_path
   end
 end
