@@ -29,7 +29,6 @@ gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-c
 gem 'sprockets'
 gem 'sprockets-es6'
 gem 'faraday'
-gem 'mailcatcher'
 
 
 group :development, :test do
