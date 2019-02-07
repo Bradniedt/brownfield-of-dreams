@@ -1,10 +1,8 @@
 Rails.application.configure do
-  # Verifies that versions and hashed value of the package contents in the project's package.json
   config.webpacker.check_yarn_integrity = false
   config.eager_load = false
   config.action_mailer.default_url_options = { :host => 'fast-tor-63969.herokuapp.com' }
   config.cache_classes = true
-  config.eager_load = true
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
