@@ -4,7 +4,7 @@ class AccountNotifierMailer < ApplicationMailer
     mail(to: user.email, subject: "Activate Your Account")
   end
   def invite(email, user, invitee)
-    @user = "#{user.first_name} #{user.last_name}"
+    @user = user.githubname
     @invitee = invitee
     mail(to: email, subject: "Sign up for Brownfield Tutorials")
   end
