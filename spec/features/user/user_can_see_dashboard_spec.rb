@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe "A default visitor to our app" do
   it 'can see github repos when logged in' do
-    VCR.use_cassette('github_followers_and_repos') do
-      user = create(:user, token: "whatever")
+    VCR.use_cassette('repos_and_followers') do
+      user = create(:user, token: ENV['GITHUB_API_KEY'])
       visit '/'
       click_on "Sign In"
 
@@ -38,7 +38,7 @@ describe "A default visitor to our app" do
   end
   it 'my dashboard should have a github section with follower names as links' do
     VCR.use_cassette("repos_and_followers") do
-      user = create(:user, token: "hello")
+      user = create(:user, token: ENV['GITHUB_API_KEY'])
       visit '/'
 
       click_on "Sign In"
@@ -52,7 +52,7 @@ describe "A default visitor to our app" do
       expect(page).to have_css(".follower")
 
       within(".github") do
-        expect(page).to have_link("abroberts5")
+        expect(page).to have_link("cebarks")
       end
     end
   end
@@ -72,7 +72,7 @@ describe "A default visitor to our app" do
       expect(page).to have_css(".following")
 
       within(".github") do
-        expect(page).to have_link("iandouglas")
+        expect(page).to have_link("mgoodhart5")
       end
     end
   end

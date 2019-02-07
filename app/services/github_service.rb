@@ -10,7 +10,7 @@ class GithubService
 
   def get_url(url)
     response = @conn.get(url)
-    JSON.parse(response.body, symbolize_names: true).take(5)
+    JSON.parse(response.body, symbolize_names: true)
   end
 
   def find_repos
@@ -19,5 +19,29 @@ class GithubService
 
   def self.find_repos(token)
     new(token).find_repos
+  end
+
+  def find_friends
+    get_url("/user/following")
+  end
+
+  def self.find_friends(token)
+    new(token).find_friends
+  end
+
+  def find_followers
+    get_url("/user/followers")
+  end
+
+  def self.find_followers(token)
+    new(token).find_followers
+  end
+
+  def find_email(name)
+    get_url("/users/#{name}")
+  end
+
+  def self.find_email(token, name)
+    new(token).find_email(name)
   end
 end

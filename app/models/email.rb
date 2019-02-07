@@ -5,7 +5,7 @@ class Email
   end
 
   def self.find_address(token, name)
-    result = GithubEmailService.find_email(token, name)[:email]
+    result = GithubService.find_email(token, name)[:email]
     Email.new(result)
   end
 

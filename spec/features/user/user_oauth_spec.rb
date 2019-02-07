@@ -29,7 +29,6 @@ describe 'User Oauth' do
       expect(updated_user.token).to eq(ENV['GITHUB_API_KEY'])
       within(".github") do
         expect(page).to have_link("activerecord-obstacle-course")
-        expect(page).to have_link("abroberts5")
       end
     end
   end

@@ -23,7 +23,7 @@ describe Follower, type: :model do
   describe 'class methods' do
     it '.find_all' do
       VCR.use_cassette("github_follower_service") do
-        token = "hello"
+        token = ENV['GITHUB_API_KEY']
         followers = Follower.find_all(token)
 
 

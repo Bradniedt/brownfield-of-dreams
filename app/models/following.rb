@@ -6,7 +6,7 @@ class Following
   end
 
   def self.find_all(token)
-    friends = GithubFriendsService.find_friends(token).map do |data|
+    friends = GithubService.find_friends(token).map do |data|
       Following.new(data)
     end
     friends

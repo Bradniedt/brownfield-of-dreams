@@ -2,6 +2,7 @@ class Tutorial < ApplicationRecord
   has_many :videos, ->  { order(position: :ASC) }, dependent: :destroy
   acts_as_taggable_on :tags, :tag_list
   accepts_nested_attributes_for :videos
+  validates_presence_of :title, :description, :thumbnail
 
   def self.tagged(user, params)
     user ? get_tagged_user(params) : get_tagged_not_user(params)

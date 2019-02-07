@@ -6,9 +6,8 @@ class Repo
   end
 
   def self.find_all(token)
-    repos = GithubService.find_repos(token).map do |data|
-      Repo.new(data)
-    end
+    filter = GithubService.find_repos(token).take(5)
+    repos = filter.map { |data| Repo.new(data) }
     repos
   end
 end
