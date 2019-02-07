@@ -3,6 +3,7 @@ require 'rails_helper'
 describe "As a user" do
   it 'I can send an invite to any github user' do
     # VCR.use_cassette('github_emails') do
+      clear_emails
       user = create(:user, token: "#{ENV['GITHUB_API_KEY']}")
       visit '/'
       click_on "Sign In"
@@ -24,6 +25,12 @@ describe "As a user" do
 
       expect(current_path).to eq(dashboard_path)
       expect(page).to have_content("Successfully sent invite!")
+
+      open_email('jeff@turing.io')
+      expect(current_email).to have_content('has invited you to join Brownfield Tutorials. You can create an account here')
+
+      current_email.click_link 'Signup'
+      expect(current_path).to eq(register_path)
     # end
   end
   it 'I cannot send an invite to a github user with no email' do
