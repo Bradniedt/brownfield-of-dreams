@@ -1,6 +1,6 @@
 class GithubEmailService
   def initialize(token, githubname)
-    @token = "#{token}"
+    @token = "token #{token}"
     @name = githubname
     @conn = Faraday.new(url: "https://api.github.com") do |faraday|
       faraday.headers["Authorization"] = @token
