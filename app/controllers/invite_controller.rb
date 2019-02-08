@@ -15,7 +15,7 @@ class InviteController < ApplicationController
   end
 
   def send_invite(result)
-    AccountNotifierMailer.invite(result.address, current_user, params[:github_handle]).deliver_now
+    AccountNotifierMailer.invite(result.address, current_user, params[:github_handle]).deliver_later
     flash[:notice] = "Successfully sent invite!"
   end
 

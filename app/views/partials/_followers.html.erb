@@ -3,7 +3,7 @@
   <% @user.followers.each do |follower| %>
     <li id="<%= follower.name %>"> <%= link_to "#{follower.name}", "#{follower.url}", class: "follower" %>
       <% if !User.user_check(follower.name).nil? && !(@user.user.friend_check(follower.name)) %>
-        <%= link_to "Add as Friend", add_friend_path(id: @user.user.id, name: follower.name), method: :post %>
+        <%= link_to "Add as Friend", add_friend_path(id: @user.user.id, name: follower.name) %>
       <% end %>
     </li>
   <% end %>

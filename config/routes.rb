@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/register', to: 'users#new'
   get 'auth/github', as: :github_login
   get '/auth/github/callback', to: 'github#create'
-  post '/add_friend', to: "friendship#create", as: :add_friend
+  get '/add_friend', to: "friendship#create", as: :add_friend
   get '/notification', as: :notification, to: 'notification#create'
   get '/activate', as: :activate, to: 'activate#create'
   get '/invite', as: :invite, to: 'invite#show'
